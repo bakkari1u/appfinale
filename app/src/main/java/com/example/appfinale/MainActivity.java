@@ -3,8 +3,7 @@ package com.example.appfinale;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.fragment.app.FragmentTransaction;
+
 
 
 
@@ -24,10 +23,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
-       // if (savedInstanceState == null) {
+        if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    ArticleFragment.newInstance()).addToBackStack(null).commit();
-       // }
+                    ArticleFragment.newInstance(0)).addToBackStack(null).commit();
+        }
     }
 
 
@@ -41,10 +40,10 @@ public class MainActivity extends AppCompatActivity {
 
                     switch (item.getItemId()) {
                         case R.id.nav_list:
-                            selectedFragment = ArticleFragment.newInstance();
+                            selectedFragment = ArticleFragment.newInstance(0);
                             break;
                         case R.id.nav_colone:
-                            selectedFragment = ArticleFragment.newInstance();
+                            selectedFragment = ArticleFragment.newInstance(1);
                             break;
                     }
 
