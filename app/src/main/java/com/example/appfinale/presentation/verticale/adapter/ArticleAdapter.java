@@ -6,13 +6,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.appfinale.R;
 import com.example.appfinale.data.ArticleDetails;
+import com.example.appfinale.presentation.verticale.fragment.ArticleDetailsFragment;
 import com.example.appfinale.utils.Utils;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +48,13 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
     public void onBindViewHolder( ArticleViewHolder holder, int position) {
         final ArticleDetails model = articles.get(position);
         holder.bind(model);
+        holder.mView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentManager.beginTransaction().replace(R.id.fragment_container,
+                        ArticleDetailsFragment.newInstance(model)).addToBackStack(null).commit();
+            }
+        });
 
     }
 
