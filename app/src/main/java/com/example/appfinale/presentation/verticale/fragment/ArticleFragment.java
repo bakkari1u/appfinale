@@ -30,9 +30,9 @@ public class ArticleFragment extends Fragment implements ArticleSearchContract.V
     private RecyclerView recyclerView;
     private ArticleAdapter articleAdapter;
     private FragmentManager fragmentManager;
-    private int affichage;
+    private int affichage =0;
 
-    private ArticleFragment(){}
+    public ArticleFragment(){}
 
     public static ArticleFragment newInstance(int affichage) {
         ArticleFragment articleFragment = new ArticleFragment();
