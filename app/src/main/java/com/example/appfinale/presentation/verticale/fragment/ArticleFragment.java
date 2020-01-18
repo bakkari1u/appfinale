@@ -63,8 +63,10 @@ public class ArticleFragment extends Fragment implements ArticleSearchContract.V
         recyclerView.setAdapter(articleAdapter);
         if (affichage == 0) {
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+            articleAdapter.setDisplay(0);
         } else {
             recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+            articleAdapter.setDisplay(1);
 
         }
 

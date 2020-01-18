@@ -16,6 +16,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.appfinale.R;
 import com.example.appfinale.data.ArticleDetails;
+import com.example.appfinale.presentation.verticale.ArticleSearchContract;
 import com.example.appfinale.presentation.verticale.fragment.ArticleDetailsFragment;
 import com.example.appfinale.utils.Utils;
 import java.util.ArrayList;
@@ -26,12 +27,17 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
     private List<ArticleDetails> articles;
     private Context context;
     private FragmentManager fragmentManager;
+    private int display = 0 ;
 
 
     public ArticleAdapter(FragmentManager fragmentManager) {
         this.fragmentManager=fragmentManager;
         articles = new ArrayList<>();
 
+    }
+
+    public void setDisplay ( int display) {
+        this.display = display ;
     }
     public void bindViewModels(List<ArticleDetails> articleDetailsList){
         this.articles.addAll(articleDetailsList);
@@ -40,8 +46,17 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
 
     @Override
     public ArticleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_ver, parent, false);
+
+        View view ;
+
+        if(this.display ==0){
+             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_ver, parent, false);
+        }
+        else{
+             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_hor, parent, false);
+        }
         return new ArticleViewHolder(view, fragmentManager);
+
     }
 
     @Override
@@ -79,10 +94,10 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
             mView = itemView;
             this.fragmentManager = fragmentManager;
             title = itemView.findViewById(R.id.title);
-            desc = itemView.findViewById(R.id.desc);
-            author = itemView.findViewById(R.id.author);
+//            desc = itemView.findViewById(R.id.desc);
+//            author = itemView.findViewById(R.id.author);
             published_ad = itemView.findViewById(R.id.publishedAt);
-            source = itemView.findViewById(R.id.source);
+//            source = itemView.findViewById(R.id.source);
             time = itemView.findViewById(R.id.time);
             imageView = itemView.findViewById(R.id.img);
 
@@ -91,10 +106,10 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
         void bind(ArticleDetails articleDetails) {
             this.articleDetails = articleDetails;
             title.setText(articleDetails.getTitle());
-            desc.setText(articleDetails.getDescription());
+//            desc.setText(articleDetails.getDescription());
             time.setText(" \u2022 " + Utils.DateToTimeFormat(articleDetails.getPublishedAt()));
             published_ad.setText(Utils.DateFormat(articleDetails.getPublishedAt()));
-            author.setText(articleDetails.getAuthor());
+//            author.setText(articleDetails.getAuthor());
             Glide.with(mView)
                     .load(articleDetails.getUrlToImage())
                     .apply(new RequestOptions().override(200,200))
@@ -104,4 +119,5 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
         }
 
     }
+
 }

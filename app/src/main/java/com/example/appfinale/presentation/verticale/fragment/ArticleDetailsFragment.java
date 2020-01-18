@@ -28,13 +28,13 @@ import com.google.android.material.appbar.CollapsingToolbarLayout;
 public class ArticleDetailsFragment extends Fragment implements AppBarLayout.OnOffsetChangedListener {
 
     private ImageView imageView;
-    private TextView appbar_title, appbar_subtitle, date, time, title;
+    private TextView appbar_title, appbar_subtitle, date, time, title , desc;
     private boolean isHideToolbarView = false;
     private FrameLayout date_behavior;
     private LinearLayout titleAppbar;
     private AppBarLayout appBarLayout;
     private Toolbar toolbar;
-    private String mUrl, mImg, mTitle, mDate, mSource, mAuthor;
+    private String mUrl, mImg, mTitle, mDate, mSource, mAuthor , mDesc;
     private View rootView;
 
 
@@ -43,6 +43,7 @@ public class ArticleDetailsFragment extends Fragment implements AppBarLayout.OnO
         mUrl = articleDetails.getUrl();
         mImg = articleDetails.getUrlToImage();
         mTitle = articleDetails.getTitle();
+        mDesc = articleDetails.getDescription();
         mDate = articleDetails.getPublishedAt();
         //mSource = articleDetails.getIngrdient1();
         mAuthor = articleDetails.getAuthor();
@@ -76,11 +77,13 @@ public class ArticleDetailsFragment extends Fragment implements AppBarLayout.OnO
         date = rootView.findViewById(R.id.date);
         time = rootView.findViewById(R.id.time);
         title = rootView.findViewById(R.id.title);
+        desc = rootView.findViewById(R.id.desc);
 
         appbar_title.setText(mSource);
         appbar_subtitle.setText(mUrl);
         date.setText(Utils.DateFormat(mDate));
         title.setText(mTitle);
+        desc.setText(mDesc);
 
         String author;
         if (mAuthor != null){
@@ -89,7 +92,7 @@ public class ArticleDetailsFragment extends Fragment implements AppBarLayout.OnO
             author = "";
         }
         time.setText(mSource + author + " \u2022 " + Utils.DateToTimeFormat(mDate));
-        initWebView(mUrl);
+       // initWebView(mUrl);
 
 
         Glide.with(rootView)
@@ -100,18 +103,18 @@ public class ArticleDetailsFragment extends Fragment implements AppBarLayout.OnO
         return rootView;
     }
 
-    private void initWebView(String url){
-        WebView webView = rootView.findViewById(R.id.webView);
-        webView.getSettings().setLoadsImagesAutomatically(true);
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.getSettings().setDomStorageEnabled(true);
-        webView.getSettings().setSupportZoom(true);
-        webView.getSettings().setBuiltInZoomControls(true);
-        webView.getSettings().setDisplayZoomControls(false);
-        webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-        webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl(url);
-    }
+//    private void initWebView(String url){
+//        WebView webView = rootView.findViewById(R.id.webView);
+//        webView.getSettings().setLoadsImagesAutomatically(true);
+//        webView.getSettings().setJavaScriptEnabled(true);
+//        webView.getSettings().setDomStorageEnabled(true);
+//        webView.getSettings().setSupportZoom(true);
+//        webView.getSettings().setBuiltInZoomControls(true);
+//        webView.getSettings().setDisplayZoomControls(false);
+//        webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+//        webView.setWebViewClient(new WebViewClient());
+//        webView.loadUrl(url);
+//    }
 
     @Override
     public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
