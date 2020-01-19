@@ -38,20 +38,21 @@ public class ArticleDetailsFragment extends Fragment implements AppBarLayout.OnO
     private View rootView;
 
 
-    public ArticleDetailsFragment(ArticleDetails articleDetails){
+    public ArticleDetailsFragment(){}
 
-        mUrl = articleDetails.getUrl();
-        mImg = articleDetails.getUrlToImage();
-        mTitle = articleDetails.getTitle();
-        mDesc = articleDetails.getDescription();
-        mDate = articleDetails.getPublishedAt();
-        //mSource = articleDetails.getIngrdient1();
-        mAuthor = articleDetails.getAuthor();
-    }
 
     public static ArticleDetailsFragment newInstance(ArticleDetails articleDetails) {
 
-        return  new ArticleDetailsFragment(articleDetails) ;
+        ArticleDetailsFragment a = new ArticleDetailsFragment();
+        a.mUrl = articleDetails.getUrl();
+        a.mImg = articleDetails.getUrlToImage();
+        a.mTitle = articleDetails.getTitle();
+        a.mDesc = articleDetails.getDescription();
+        a.mDate = articleDetails.getPublishedAt();
+        //mSource = articleDetails.getIngrdient1();
+        a.mAuthor = articleDetails.getAuthor();
+
+        return   a ;
     }
 
     @Nullable
@@ -81,7 +82,7 @@ public class ArticleDetailsFragment extends Fragment implements AppBarLayout.OnO
 
         appbar_title.setText(mSource);
         appbar_subtitle.setText(mUrl);
-        date.setText(Utils.DateFormat(mDate));
+  //      date.setText(Utils.DateFormat(mDate));
         title.setText(mTitle);
         desc.setText(mDesc);
 
@@ -91,7 +92,7 @@ public class ArticleDetailsFragment extends Fragment implements AppBarLayout.OnO
         } else {
             author = "";
         }
-        time.setText(mSource + author + " \u2022 " + Utils.DateToTimeFormat(mDate));
+//        time.setText(mSource + author + " \u2022 " + Utils.DateToTimeFormat(mDate));
        // initWebView(mUrl);
 
 
