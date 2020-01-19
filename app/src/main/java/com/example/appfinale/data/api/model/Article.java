@@ -3,6 +3,10 @@ package com.example.appfinale.data.api.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * une classe represente un article retourné par l'api
+ */
+
 public class Article {
 
     @SerializedName("source")

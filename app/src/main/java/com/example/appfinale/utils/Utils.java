@@ -11,6 +11,10 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Random;
 
+/**
+ * une classe pour la configuration des formats des dates
+ */
+
 public class Utils {
 
     public static ColorDrawable[] vibrantLightColorList =

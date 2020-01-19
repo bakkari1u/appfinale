@@ -1,6 +1,9 @@
 package com.example.appfinale.data;
 
 
+/**
+ * une classe represente un model d'un article
+ */
 public class ArticleDetails {
 
 

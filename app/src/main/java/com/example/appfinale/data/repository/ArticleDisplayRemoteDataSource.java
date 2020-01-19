@@ -14,8 +14,12 @@ public class ArticleDisplayRemoteDataSource {
         this.apiInterface = apiInterface;
     }
 
+
+    /**
+     * @return ArticleListResponse (retourne tous les articles de pays : france )
+     */
     public Single<ArticleListResponse> getArticlesSearchResponse() {
-        return apiInterface.getNewsArticles("ma","25bba3e0bd534edfbe4f35e93463a3d6");
+        return apiInterface.getNewsArticles("fr","25bba3e0bd534edfbe4f35e93463a3d6");
     }
 
 

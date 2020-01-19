@@ -13,7 +13,9 @@ import android.view.MenuItem;
 import com.example.appfinale.presentation.verticale.fragment.ArticleFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-
+/**
+ * la classe principale (activité) de l'application
+ */
 public class MainActivity extends AppCompatActivity {
 
 
@@ -30,7 +32,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
+    /**
+     * permet la navigation entre les deux affichages
+     */
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {

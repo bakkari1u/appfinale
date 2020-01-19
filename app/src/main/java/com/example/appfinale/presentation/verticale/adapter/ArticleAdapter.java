@@ -22,6 +22,10 @@ import com.example.appfinale.utils.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * une classe represente un adaptateur  pour afficher une liste déroulante grace à recyclerview
+ */
+
 public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>  {
 
     private List<ArticleDetails> articles;
@@ -43,6 +47,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
         this.articles.addAll(articleDetailsList);
         notifyDataSetChanged();
     }
+
 
     @Override
     public ArticleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

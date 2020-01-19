@@ -5,6 +5,10 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+/**
+ * une classe represente le retour en entier de l'api
+ */
+
 public class NewsResponse {
     @SerializedName("status")
     @Expose

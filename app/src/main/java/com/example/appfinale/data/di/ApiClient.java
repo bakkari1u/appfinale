@@ -25,6 +25,11 @@ public class ApiClient {
     private static ApiInterface apiInterface;
     private static ArticleDisplayRepo articleDisplayRepo;
 
+    /**
+     * methode de configuration
+     * @return retrofit
+     */
+
     public static Retrofit getRetrofit() {
         if (retrofit == null) {
             HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
